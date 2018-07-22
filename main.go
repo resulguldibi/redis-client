@@ -22,4 +22,9 @@ func main() {
 
 	fmt.Println(res2)
 	fmt.Println(err2)
+
+	res3, err3 := redisClient.HGet("user-stage-info-106909391205018145285", "4")
+
+	fmt.Println(res3)
+	fmt.Println(err3)
 }

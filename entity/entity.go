@@ -74,6 +74,11 @@ func (c *RedisClient) HIncrBy(key, field string, incr int64) (int64, error) {
 func (c *RedisClient) HGet(key string, field string) (string, error) {
 	var result string = ""
 	result, err := c.client.HGet(key, field).Result()
+
+	if err == redis.Nil {
+		return result, nil
+	}
+
 	return result, err
 }
 
