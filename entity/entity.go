@@ -9,6 +9,8 @@ type IRedisClient interface {
 	HMSet(key string, fields map[string]interface{}) (string, error)
 	HDel(key string, fields ...string) (int64, error)
 	HIncrBy(key, field string, incr int64) (int64, error)
+	HGet(key, field string) (string, error)
+	HSet(key, field string, value interface{}) (bool, error)
 }
 
 type RedisClient struct {
@@ -65,6 +67,20 @@ func (c *RedisClient) HIncrBy(key, field string, incr int64) (int64, error) {
 	if err == nil {
 		result = response
 	}
+
+	return result, err
+}
+
+func (c *RedisClient) HGet(key string, field string) (string, error) {
+	var result string = ""
+	result, err := c.client.HGet(key, field).Result()
+	return result, err
+}
+
+func (c *RedisClient) HSet(key string, field string, value interface{}) (bool, error) {
+	var result bool = false
+
+	result, err := c.client.HSet(key, field, value).Result()
 
 	return result, err
 }
