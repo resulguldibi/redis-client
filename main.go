@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"resulguldibi/redis-client/factory"
+	"github.com/resulguldibi/redis-client/factory"
 )
 
 func main() {
