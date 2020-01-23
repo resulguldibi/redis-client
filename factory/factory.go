@@ -1,7 +1,7 @@
 package factory
 
 import (
-	"resulguldibi/redis-client/entity"
+	"github.com/resulguldibi/redis-client/entity"
 )
 
 type IRedisClientFactory interface {
